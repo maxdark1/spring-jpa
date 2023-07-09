@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    drive-class-name: com.mysql.cj.jdbc.Drier
+    url: jdbc:mysql://localhost:3306/pizzeria?createDatabaseIfNotExist=true
+    username: root
+    password: 78481889aa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
