@@ -28,6 +28,10 @@ public class PizzaService {
         return this.pizzaRepository.findAll();
     }
 
+    public PizzaEntity getByName(String name){
+        return this.pizzaRepository.findAllByAvailableTrueAndNameIgnoreCase(name);
+    }
+
     public  List<PizzaEntity> getAvailable(){
         return this.pizzaRepository.findAllByAvailableTrueOrderByPrice();
     }
