@@ -51,4 +51,12 @@ public class PizzaService {
     public  boolean exists(int idPizza){
         return this.pizzaRepository.existsById(idPizza);
     }
+
+    public List<PizzaEntity> getWith(String ingredient){
+        return this.pizzaRepository.findAllByAvailableTrueAndDescripcionContainingIgnoreCase(ingredient);
+    }
+
+    public List<PizzaEntity> getWithOut(String ingredient){
+        return this.pizzaRepository.findAllByAvailableTrueAndDescripcionNotContainingIgnoreCase(ingredient);
+    }
 }
