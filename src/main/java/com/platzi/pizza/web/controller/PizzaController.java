@@ -43,6 +43,16 @@ public class PizzaController {
         return ResponseEntity.ok(this.pizzaService.getByName(name));
     }
 
+    @GetMapping("/with/{ingredient}")
+    public ResponseEntity<List<PizzaEntity>> getWith(@PathVariable(name="ingredient") String ingredient){
+        return ResponseEntity.ok(this.pizzaService.getWith(ingredient));
+    }
+
+    @GetMapping("/without/{ingredient}")
+    public ResponseEntity<List<PizzaEntity>> getWithOut(@PathVariable(name="ingredient") String ingredient){
+        return ResponseEntity.ok(this.pizzaService.getWithOut(ingredient));
+    }
+
     @PostMapping()
     public ResponseEntity<PizzaEntity> save(@RequestBody PizzaEntity pizza){
         if(pizza.getIdPizza() == null || !this.pizzaService.exists(pizza.getIdPizza())) {
@@ -70,6 +80,7 @@ public class PizzaController {
             return ResponseEntity.badRequest().build();
         }
     }
+
 
 
 }
