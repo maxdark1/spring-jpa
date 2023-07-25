@@ -20,4 +20,8 @@ public class OrderService {
         orders.forEach(order -> System.out.println(order.getCustomer().getName()));
         return orders;
     }
+
+    public  List<OrderEntity> getCustomerOrders(String idCustomer){
+        return  this.orderRepository.findCustomerOrders(idCustomer);
+    }
 }
