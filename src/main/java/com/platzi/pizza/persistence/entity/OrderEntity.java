@@ -21,7 +21,7 @@ public class OrderEntity {
     private Integer idOrder;
 
     @Column(name="id_customer", nullable = false, length = 15)
-    private Integer idCustomer;
+    private String idCustomer;
 
     @Column(nullable = false, columnDefinition = "DATETIME")
     private LocalDateTime date;
