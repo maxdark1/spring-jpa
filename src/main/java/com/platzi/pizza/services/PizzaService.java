@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -76,7 +77,7 @@ public class PizzaService {
     public List<PizzaEntity> getWithOut(String ingredient){
         return this.pizzaRepository.findAllByAvailableTrueAndDescripcionNotContainingIgnoreCase(ingredient);
     }
-    @Transactional(noRollbackFor = EmailApiException.class)
+    @Transactional(noRollbackFor = EmailApiException.class, propagation = Propagation.REQUIRED)
     public void updatePrice(UpdatePizzaPriceDto dto){
         this.pizzaRepository.updatePrice(dto);
         this.sendEmail();
