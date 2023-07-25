@@ -38,6 +38,14 @@ public class PizzaController {
         return ResponseEntity.ok(this.pizzaService.getAvailable());
     }
 
+    @GetMapping("/available/sort")
+    public ResponseEntity<Page<PizzaEntity>> getAvailableSort(@RequestParam(defaultValue = "0") int page,
+                                                              @RequestParam(defaultValue = "8") int elements,
+                                                              @RequestParam(defaultValue = "price") String sortBy,
+                                                              @RequestParam(defaultValue = "ASC") String sortDirection){
+        return ResponseEntity.ok(this.pizzaService.getAvailableSort(page,elements,sortBy, sortDirection));
+    }
+
     @GetMapping("/name/{name}")
     public ResponseEntity<PizzaEntity> getAvailableName(@PathVariable(name="name") String name){
         return ResponseEntity.ok(this.pizzaService.getByName(name));
